@@ -7,7 +7,6 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Api.DAL.DTO;
 using Api.Models;
-using Api.BL.Integration;
 using Api.Common;
 using System.Text;
 using System.Collections.Generic;
@@ -16,6 +15,7 @@ namespace Api.Controllers
 {
     public class IntegrationsController : ApiController
     {
+        /*
         // GET: api/Integrations
         public IEnumerable<IntegrationInfoModel> GetIntegrations()
         {
@@ -49,6 +49,7 @@ namespace Api.Controllers
             };
         }
 
+         */
         #region auto-generated
         /*
         // PUT: api/Integrations/5

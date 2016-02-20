@@ -7,13 +7,13 @@ namespace Api.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class ChangeIntegrationDetailsValueMaxLength : IMigrationMetadata
+    public sealed partial class Seed : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangeIntegrationDetailsValueMaxLength));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Seed));
         
         string IMigrationMetadata.Id
         {
-            get { return "201602151629409_ChangeIntegrationDetailsValueMaxLength"; }
+            get { return "201602201549078_Seed"; }
         }
         
         string IMigrationMetadata.Source

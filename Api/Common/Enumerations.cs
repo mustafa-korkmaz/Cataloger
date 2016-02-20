@@ -23,13 +23,19 @@ namespace Api.Common
         Category=1
     }
 
-    public enum IntegrationStatus
+    public enum Status
     {
-        Initial = 0,
         Active,
         Passive,
         Suspended,
         Deleted
+    }
+
+    public enum Key
+    {
+        Tag,
+        Image,
+        Video
     }
 
     public enum ResponseCode

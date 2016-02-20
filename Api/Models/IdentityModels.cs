@@ -33,11 +33,10 @@ namespace Api.Models
         {
         }
 
-        public DbSet<Market> Markets { get; set; }
-        public DbSet<MarketUser> MarketUsers { get; set; }
-        public DbSet<MarketUserIntegration> MarketUserIntegrations { get; set; }
-        public DbSet<IntegrationDetail> IntegrationDetails { get; set; }
-        public DbSet<Integration> Integrations { get; set; }
+        public DbSet<Property> Properties { get; set; }
+        public DbSet<Catalog> Catalogs { get; set; }
+        public DbSet<Item> Items { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         public static ApplicationDbContext Create()
         {
@@ -48,29 +47,34 @@ namespace Api.Models
         {
             base.OnModelCreating(modelBuilder);
 
-            //one-to-many 
-            modelBuilder.Entity<MarketUser>()
-                        .HasRequired<Market>(m => m.Market)
-                        .WithMany(m => m.MarketUsers)
-                        .HasForeignKey(m => m.MarketId);
+            // self reference
+            modelBuilder.Entity<Category>()
+                    .HasOptional(c => c.Parent)
+                    .WithMany(c => c.Children)
+                    .HasForeignKey(c => c.ParentId);
 
-            modelBuilder.Entity<MarketUserIntegration>()
-                     .HasRequired<MarketUser>(m => m.MarketUser)
-                     .WithMany(m => m.MarketUserIntegrations)
-                     .HasForeignKey(m => m.MarketUserId);
+            // many-to-many
+            modelBuilder.Entity<Item>()
+                    .HasMany(i => i.Categories)
+                    .WithMany(c => c.Items)
+                    .Map(m =>
+                    {
+                        m.ToTable("ItemCategories");
+                        m.MapLeftKey("ItemId");
+                        m.MapRightKey("CategoryId");
+                    });
 
-            modelBuilder.Entity<MarketUserIntegration>()
-                  .HasRequired<Integration>(m => m.Integration)
-                  .WithMany(m => m.MarketUserIntegrations)
-                  .HasForeignKey(m => m.IntegrationId);
-
-            modelBuilder.Entity<IntegrationDetail>()
-                .HasRequired<Integration>(m => m.Integration)
-                .WithMany(m => m.IntegrationDetails)
-                .HasForeignKey(m => m.IntegrationId);
-
+            // many-to-many
+            modelBuilder.Entity<Item>()
+                    .HasMany(i => i.Properties)
+                    .WithMany(p => p.Items)
+                     .Map(m =>
+                     {
+                         m.ToTable("ItemProperties");
+                         m.MapLeftKey("ItemId");
+                         m.MapRightKey("PropertyId");
+                     });
         }
-
     }
 
 }

@@ -1,4 +1,4 @@
-namespace Api.Migrations
+﻿namespace Api.Migrations
 {
     using Api.Common;
     using Api.DAL.DTO;
@@ -22,38 +22,41 @@ namespace Api.Migrations
             //You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //to avoid creating duplicate seed data. E.g.
 
-            context.Markets.AddOrUpdate(
-              p => p.Name,
-              new Market { Name = "N11.com" },
-              new Market { Name = "GittiGidiyor.com" },
-              new Market { Name = "Hepsiburada.com" }
+            context.Catalogs.AddOrUpdate(
+                 p => new { p.Name, p.Desc, p.CreatedAt },
+                 new Catalog { Name = "Restoran1 Menu Catalog", Desc = "Restoran1 menu catalog description", CreatedAt = DateTime.Now },
+                 new Catalog { Name = "Restoran2 Menu Catalog", Desc = "Restoran2 menu catalog description", CreatedAt = DateTime.Now },
+                 new Catalog { Name = "Restoran3 Menu Catalog", Desc = "Restoran3 menu catalog description", CreatedAt = DateTime.Now },
+                 new Catalog { Name = "Restoran4 Menu Catalog", Desc = "Restoran4 menu catalog description", CreatedAt = DateTime.Now }
+               );
+
+            context.Items.AddOrUpdate(
+                p => new { p.Name, p.Desc },
+                new Item { Name = "Celery", Desc = "Description of celery" },
+                new Item { Name = "Spinach", Desc = "Description ofspinach" },
+                new Item { Name = "Lemonades", Desc = "Description of Lemonades" },
+                new Item { Name = "Trios", Desc = "Description of Trios" },
+                new Item { Name = "Dark Chocolate", Desc = "Description of Dark Chocolate" },
+                new Item { Name = "Just Vanilla", Desc = "Description of Just Vanilla" },
+                new Item { Name = "Coke", Desc = "Description of coke" },
+                new Item { Name = "Orange Juice", Desc = "Description of orange juice" },
+                new Item { Name = "Test item", Desc = "char test ş,Ş,ı,İ,ğ,Ğ,ö,Ö,ü,Ü,ç,Ç" }
+          );
+
+            context.Categories.AddOrUpdate(
+              p => new { p.Name, p.Desc },
+              new Category { Name = "Vegetables", Desc = "Description of vegetables" },
+              new Category { Name = "Beverages", Desc = "Description of beverages" },
+              new Category { Name = "Desserts", Desc = "Description of desserts" },
+              new Category { Name = "Cookies", Desc = "Description of cookies", ParentId = 3 },
+              new Category { Name = "Ice Creams", Desc = "Description of ice creams", ParentId = 3 }
             );
 
-            context.MarketUsers.AddOrUpdate(
-             p => new { p.Name, p.MarketId, p.LoginName, p.Token },
-             new MarketUser { Name = "N11-testUser", MarketId = 1, LoginName = "N11-testUser-loginName", Token = "N11-testUser-token" },
-             new MarketUser { Name = "N11-testUser-1", MarketId = 1, LoginName = "N11-testUser-1-loginName", Token = "N11-testUser-1-token" },
-             new MarketUser { Name = "GG-testUser", MarketId = 2, LoginName = "GG-testUser-loginName", Token = "GG-testUser-token" }
+            context.Properties.AddOrUpdate(
+             p => new { p.Key, p.Value },
+             new Property { Key = Key.Tag, Value = "Menu of the day" },
+             new Property { Key = Key.Tag, Value = "Best seller" }
             );
-
-            context.Integrations.AddOrUpdate(
-              p => new { p.Name, p.Type },
-              new Integration { Name = "harun-kirkikoglu", Type = IntegrationType.Opencart },
-              new Integration { Name = "local", Type = IntegrationType.Opencart }
-            );
-
-            context.MarketUserIntegrations.AddOrUpdate(
-             p => new { p.Desc, p.IntegrationId, p.MarketUserId },
-             new MarketUserIntegration { Desc = "harunk.com sitesine ait n11 entegrasyonu", IntegrationId = 1, MarketUserId = 1 },
-             new MarketUserIntegration { Desc = "harunk.com sitesine ait gg entegrasyonu", IntegrationId = 1, MarketUserId = 3 }
-            );
-
-            context.IntegrationDetails.AddOrUpdate(
-              p => new { p.IntegrationId, p.Url, p.ExportType },
-              new IntegrationDetail { IntegrationId = 1, Url = "http://localhost:8080/opencart/index.php?route=export/product", ExportType = ExportType.Product },
-              new IntegrationDetail { IntegrationId = 1, Url = "http://localhost:8080/opencart/index.php?route=export/category", ExportType = ExportType.Category }
-              );
-
         }
     }
 }
