@@ -1,10 +1,6 @@
 ﻿using Api.Common;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 
 namespace Api.DAL.DTO
 {
@@ -12,7 +8,7 @@ namespace Api.DAL.DTO
     {
         public Catalog()
         {
-            ModifiedAt = DateTime.Now;
+            ModifiedAt = DateTime.Now; // default value
         }
 
         public int Id { get; set; }

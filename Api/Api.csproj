@@ -224,7 +224,6 @@
     <Compile Include="DAL\DTO\Item.cs" />
     <Compile Include="DAL\DTO\Catalog.cs" />
     <Compile Include="DAL\DTO\Property.cs" />
-    <Compile Include="DAL\DTO\TestCodeFirstDto.cs" />
     <Compile Include="DAL\MySqlConfiguration.cs" />
     <Compile Include="DAL\MySqlHistoryContext.cs" />
     <Compile Include="DAL\MySqlInitializer.cs" />
