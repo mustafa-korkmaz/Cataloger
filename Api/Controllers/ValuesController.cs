@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
+using Api.Filters;
 
 namespace Api.Controllers
 {
-   [Authorize]
+    [TabletMenuAuthenticate]
+    [Authorize]
     public class ValuesController : ApiController
     {
         // GET api/values
@@ -15,7 +17,7 @@ namespace Api.Controllers
         // GET api/values/5
         public string Get(int id)
         {
-            return "you wrote"+ id;
+            return "you wrote" + id;
         }
 
         // POST api/values

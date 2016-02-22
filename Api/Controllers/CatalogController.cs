@@ -16,6 +16,7 @@ namespace Api.Controllers
         // GET: api/Catalog
         public IQueryable<Catalog> GetCatalogs()
         {
+            var catalogUsers = db.Users.Find("f5a6ad93-e0cf-4c66-aecf-b18ebefeb064");
             return db.Catalogs;
         }
 

@@ -8,8 +8,6 @@ namespace Api.DAL.DTO
     {
         public Category()
         {
-            Children = new List<Category>();
-            Items = new List<Item>();
             Status = Status.Active;
         }
 

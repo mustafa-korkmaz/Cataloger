@@ -214,6 +214,7 @@
     <Compile Include="Common\DataExport\ShippingMethod.cs" />
     <Compile Include="Common\DataExport\ProductAttribute.cs" />
     <Compile Include="Common\Enumerations.cs" />
+    <Compile Include="Common\Helper\IntegrationKey.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CatalogController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -227,12 +228,17 @@
     <Compile Include="DAL\MySqlConfiguration.cs" />
     <Compile Include="DAL\MySqlHistoryContext.cs" />
     <Compile Include="DAL\MySqlInitializer.cs" />
+    <Compile Include="Filters\TabletMenuAuthenticateAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201602201549078_Seed.cs" />
     <Compile Include="Migrations\201602201549078_Seed.Designer.cs">
       <DependentUpon>201602201549078_Seed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602221835291_AddCatalogUsers.cs" />
+    <Compile Include="Migrations\201602221835291_AddCatalogUsers.Designer.cs">
+      <DependentUpon>201602221835291_AddCatalogUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -322,6 +328,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201602201549078_Seed.resx">
       <DependentUpon>201602201549078_Seed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602221835291_AddCatalogUsers.resx">
+      <DependentUpon>201602221835291_AddCatalogUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

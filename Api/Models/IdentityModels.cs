@@ -5,6 +5,7 @@ using System.Security.Claims;
 using Microsoft.AspNet.Identity;
 using System.Threading.Tasks;
 using Api.DAL.DTO;
+using System.Collections.Generic;
 
 namespace Api.Models
 {
@@ -12,6 +13,11 @@ namespace Api.Models
     // class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        public ApplicationUser()
+        {
+         //   Catalogs = new ICollection<Catalog>();
+        }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -19,6 +25,8 @@ namespace Api.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public virtual ICollection<Catalog> Catalogs { get; set; } // n=>n relation
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -73,6 +81,17 @@ namespace Api.Models
                          m.ToTable("ItemProperties");
                          m.MapLeftKey("ItemId");
                          m.MapRightKey("PropertyId");
+                     });
+
+            // many-to-many
+            modelBuilder.Entity<Catalog>()
+                    .HasMany(i => i.Users)
+                    .WithMany(p => p.Catalogs)
+                     .Map(m =>
+                     {
+                         m.ToTable("CatalogUsers");
+                         m.MapLeftKey("CatalogId");
+                         m.MapRightKey("UserId");
                      });
         }
     }

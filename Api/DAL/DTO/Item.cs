@@ -8,8 +8,6 @@ namespace Api.DAL.DTO
     {
         public Item()
         {
-            Categories = new List<Category>();
-            Properties = new List<Property>();
             Status = Status.Active;  // default value
         }
 

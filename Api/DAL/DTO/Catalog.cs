@@ -1,5 +1,7 @@
 ﻿using Api.Common;
+using Api.Models;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Api.DAL.DTO
@@ -28,5 +30,7 @@ namespace Api.DAL.DTO
 
         [Required]
         public DateTime ModifiedAt { get; set; }
+
+        public virtual ICollection<ApplicationUser> Users { get; set; } // n=>n relation
     }
 }

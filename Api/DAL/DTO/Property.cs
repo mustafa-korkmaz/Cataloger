@@ -8,7 +8,6 @@ namespace Api.DAL.DTO
     {
         public Property()
         {
-            Items = new List<Item>();
             Status = Status.Active;
         }
 
