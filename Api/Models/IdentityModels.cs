@@ -15,7 +15,7 @@ namespace Api.Models
     {
         public ApplicationUser()
         {
-         //   Catalogs = new ICollection<Catalog>();
+            //   Catalogs = new ICollection<Catalog>();
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
@@ -84,15 +84,21 @@ namespace Api.Models
                      });
 
             // many-to-many
-            modelBuilder.Entity<Catalog>()
-                    .HasMany(i => i.Users)
-                    .WithMany(p => p.Catalogs)
+            modelBuilder.Entity<ApplicationUser>()
+                    .HasMany(i => i.Catalogs)
+                    .WithMany(p => p.Users)
                      .Map(m =>
                      {
-                         m.ToTable("CatalogUsers");
-                         m.MapLeftKey("CatalogId");
-                         m.MapRightKey("UserId");
+                         m.ToTable("UserCatalogs");
+                         m.MapLeftKey("UserId");
+                         m.MapRightKey("CatalogId");
                      });
+
+            //one-to-many 
+            modelBuilder.Entity<Item>()
+                        .HasRequired(i => i.Catalog)
+                        .WithMany(c => c.Items)
+                        .HasForeignKey(i => i.CatalogId);
         }
     }
 

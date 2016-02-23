@@ -7,13 +7,13 @@ namespace Api.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class AddCatalogUsers : IMigrationMetadata
+    public sealed partial class test : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddCatalogUsers));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(test));
         
         string IMigrationMetadata.Id
         {
-            get { return "201602221835291_AddCatalogUsers"; }
+            get { return "201602231252334_test"; }
         }
         
         string IMigrationMetadata.Source

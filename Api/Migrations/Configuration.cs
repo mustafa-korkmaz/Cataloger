@@ -31,16 +31,16 @@
                );
 
             context.Items.AddOrUpdate(
-                p => new { p.Name, p.Desc },
-                new Item { Name = "Celery", Desc = "Description of celery" },
-                new Item { Name = "Spinach", Desc = "Description ofspinach" },
-                new Item { Name = "Lemonades", Desc = "Description of Lemonades" },
-                new Item { Name = "Trios", Desc = "Description of Trios" },
-                new Item { Name = "Dark Chocolate", Desc = "Description of Dark Chocolate" },
-                new Item { Name = "Just Vanilla", Desc = "Description of Just Vanilla" },
-                new Item { Name = "Coke", Desc = "Description of coke" },
-                new Item { Name = "Orange Juice", Desc = "Description of orange juice" },
-                new Item { Name = "Test item", Desc = "char test ş,Ş,ı,İ,ğ,Ğ,ö,Ö,ü,Ü,ç,Ç" }
+                p => new { p.Name, p.Desc, p.CatalogId },
+                new Item { Name = "Celery", Desc = "Description of celery", CatalogId = 1 },
+                new Item { Name = "Spinach", Desc = "Description ofspinach", CatalogId = 1 },
+                new Item { Name = "Lemonades", Desc = "Description of Lemonades", CatalogId = 1 },
+                new Item { Name = "Trios", Desc = "Description of Trios", CatalogId = 1 },
+                new Item { Name = "Dark Chocolate", Desc = "Description of Dark Chocolate", CatalogId = 1 },
+                new Item { Name = "Just Vanilla", Desc = "Description of Just Vanilla", CatalogId = 1 },
+                new Item { Name = "Coke", Desc = "Description of coke", CatalogId = 1 },
+                new Item { Name = "Orange Juice", Desc = "Description of orange juice", CatalogId = 1 },
+                new Item { Name = "Test item", Desc = "char test ş,Ş,ı,İ,ğ,Ğ,ö,Ö,ü,Ü,ç,Ç", CatalogId = 2 }
           );
 
             context.Categories.AddOrUpdate(

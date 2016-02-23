@@ -13,6 +13,9 @@ namespace Api.DAL.DTO
 
         public int Id { get; set; }
 
+        public int CatalogId { get; set; } // foreign key
+        public virtual Catalog Catalog { get; set; } //  // navigation for catalog
+
         [Required]
         [MaxLength(100)]
         public string Name { get; set; }

@@ -220,6 +220,8 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IntegrationsController.cs" />
+    <Compile Include="Controllers\ItemApiController.cs" />
+    <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DAL\DTO\Category.cs" />
     <Compile Include="DAL\DTO\Item.cs" />
@@ -236,9 +238,9 @@
     <Compile Include="Migrations\201602201549078_Seed.Designer.cs">
       <DependentUpon>201602201549078_Seed.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201602221835291_AddCatalogUsers.cs" />
-    <Compile Include="Migrations\201602221835291_AddCatalogUsers.Designer.cs">
-      <DependentUpon>201602221835291_AddCatalogUsers.cs</DependentUpon>
+    <Compile Include="Migrations\201602231252334_test.cs" />
+    <Compile Include="Migrations\201602231252334_test.Designer.cs">
+      <DependentUpon>201602231252334_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -308,6 +310,11 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Item\Create.cshtml" />
+    <Content Include="Views\Item\Delete.cshtml" />
+    <Content Include="Views\Item\Details.cshtml" />
+    <Content Include="Views\Item\Edit.cshtml" />
+    <Content Include="Views\Item\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -329,8 +336,8 @@
     <EmbeddedResource Include="Migrations\201602201549078_Seed.resx">
       <DependentUpon>201602201549078_Seed.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602221835291_AddCatalogUsers.resx">
-      <DependentUpon>201602221835291_AddCatalogUsers.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201602231252334_test.resx">
+      <DependentUpon>201602231252334_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
