@@ -95,11 +95,23 @@ namespace Api.Models
                      });
 
             //one-to-many 
-            modelBuilder.Entity<Item>()
-                        .HasRequired(i => i.Catalog)
-                        .WithMany(c => c.Items)
-                        .HasForeignKey(i => i.CatalogId);
+            modelBuilder.Entity<Category>()
+                        .HasRequired(c => c.Catalog)
+                        .WithMany(c => c.Categories)
+                        .HasForeignKey(c => c.CatalogId);
+
+            // many-to-many
+            modelBuilder.Entity<Category>()
+                    .HasMany(i => i.Properties)
+                    .WithMany(p => p.Categories)
+                     .Map(m =>
+                     {
+                         m.ToTable("CategoryProperties");
+                         m.MapLeftKey("CategoryId");
+                         m.MapRightKey("PropertyId");
+                     });
         }
+
     }
 
 }

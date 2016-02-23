@@ -33,6 +33,6 @@ namespace Api.DAL.DTO
 
         public virtual ICollection<ApplicationUser> Users { get; set; } // n=>n relation
 
-        public virtual ICollection<Item> Items { get; set; } // 1=>n relation
+        public virtual ICollection<Category> Categories { get; set; } // 1=>n relation
     }
 }

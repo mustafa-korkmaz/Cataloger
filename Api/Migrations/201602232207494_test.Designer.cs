@@ -13,7 +13,7 @@ namespace Api.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201602231252334_test"; }
+            get { return "201602232207494_test"; }
         }
         
         string IMigrationMetadata.Source
