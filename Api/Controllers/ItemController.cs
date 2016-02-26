@@ -4,6 +4,7 @@ using System.Net;
 using System.Web.Mvc;
 using Api.DAL.DTO;
 using Api.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Api.Controllers
 {
@@ -15,6 +16,8 @@ namespace Api.Controllers
         [Authorize]
         public ActionResult Index()
         {
+            string currentUserId = User.Identity.GetUserId();
+            ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == currentUserId);
             var items = db.Items.Include(i => i.Catalog);
             return View(items.ToList());
         }
