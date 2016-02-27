@@ -26,5 +26,7 @@ namespace Api.DAL.DTO
         public virtual ICollection<Item> Items { get; set; } // n=>n relation
 
         public virtual ICollection<Category> Categories { get; set; } // n=>n relation
+
+        public virtual ICollection<Catalog> Catalogs { get; set; } // n=>n relation
     }
 }

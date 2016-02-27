@@ -11,7 +11,7 @@ namespace Api.Common
 
     public enum IntegrationType
     {
-        Opencart=0,
+        Opencart = 0,
         Magento,
         NopCommerce
     }
@@ -19,8 +19,8 @@ namespace Api.Common
     public enum ExportType
     {
         Undefined = -1,
-        Product=0,
-        Category=1
+        Product = 0,
+        Category = 1
     }
 
     public enum Status
@@ -29,6 +29,13 @@ namespace Api.Common
         Passive,
         Suspended,
         Deleted
+    }
+
+    public enum CatalogVersion
+    {
+        Demo,
+        Standart,
+        Professional
     }
 
     public enum Key

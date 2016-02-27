@@ -30,19 +30,6 @@
                  new Catalog { Name = "Restoran4 Menu Catalog", Desc = "Restoran4 menu catalog description", CreatedAt = DateTime.Now }
                );
 
-            context.Items.AddOrUpdate(
-                p => new { p.Name, p.Desc },
-                new Item { Name = "Celery", Desc = "Description of celery" },
-                new Item { Name = "Spinach", Desc = "Description ofspinach" },
-                new Item { Name = "Lemonades", Desc = "Description of Lemonades" },
-                new Item { Name = "Trios", Desc = "Description of Trios" },
-                new Item { Name = "Dark Chocolate", Desc = "Description of Dark Chocolate" },
-                new Item { Name = "Just Vanilla", Desc = "Description of Just Vanilla" },
-                new Item { Name = "Coke", Desc = "Description of coke" },
-                new Item { Name = "Orange Juice", Desc = "Description of orange juice" },
-                new Item { Name = "Test item", Desc = "char test ş,Ş,ı,İ,ğ,Ğ,ö,Ö,ü,Ü,ç,Ç" }
-          );
-
             context.Categories.AddOrUpdate(
               p => new { p.Name, p.Desc, p.CatalogId },
               new Category { Name = "Vegetables", Desc = "Description of vegetables", CatalogId = 1 },
@@ -51,6 +38,19 @@
               new Category { Name = "Cookies", Desc = "Description of cookies", CatalogId = 1, ParentId = 3 },
               new Category { Name = "Ice Creams", Desc = "Description of ice creams", CatalogId = 1, ParentId = 3 }
             );
+
+            context.Items.AddOrUpdate(
+               p => new { p.Name, p.Desc, p.CategoryId },
+               new Item { Name = "Celery", Desc = "Description of celery", CategoryId = 1 },
+               new Item { Name = "Spinach", Desc = "Description ofspinach", CategoryId = 1 },
+               new Item { Name = "Lemonades", Desc = "Description of Lemonades", CategoryId = 2 },
+               new Item { Name = "Trios", Desc = "Description of Trios", CategoryId = 3 },
+               new Item { Name = "Dark Chocolate", Desc = "Description of Dark Chocolate", CategoryId = 4 },
+               new Item { Name = "Just Vanilla", Desc = "Description of Just Vanilla", CategoryId = 4 },
+               new Item { Name = "Coke", Desc = "Description of coke", CategoryId = 2 },
+               new Item { Name = "Orange Juice", Desc = "Description of orange juice", CategoryId = 2 },
+               new Item { Name = "Test item", Desc = "char test ş,Ş,ı,İ,ğ,Ğ,ö,Ö,ü,Ü,ç,Ç", CategoryId = 1 }
+         );
 
             context.Properties.AddOrUpdate(
              p => new { p.Key, p.Value },

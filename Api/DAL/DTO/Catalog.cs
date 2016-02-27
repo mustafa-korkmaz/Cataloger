@@ -26,6 +26,9 @@ namespace Api.DAL.DTO
         public Status Status { get; set; }
 
         [Required]
+        public CatalogVersion Version { get; set; }
+
+        [Required]
         public DateTime CreatedAt { get; set; }
 
         [Required]
@@ -34,5 +37,7 @@ namespace Api.DAL.DTO
         public virtual ICollection<ApplicationUser> Users { get; set; } // n=>n relation
 
         public virtual ICollection<Category> Categories { get; set; } // 1=>n relation
+
+        public virtual ICollection<Property> Properties { get; set; } // n=>n relation
     }
 }
