@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Api.Common.Helper;
+
 
 namespace Api.Models.Api
 {
@@ -12,10 +14,25 @@ namespace Api.Models.Api
 
         public Key Key { get; set; }
 
+        public string KeyText
+        {
+            get
+            {
+                return Key.ToText();
+            }
+        }
+
         public string Value { get; set; }
 
         public Status Status { get; set; }
 
+        public string StatusText
+        {
+            get
+            {
+                return Status.ToText();
+            }
+        }
     }
 
     public class CategoryPropertiesModel

@@ -16,18 +16,18 @@ namespace Api.Controllers.Api
     {
         private CategoryBusiness categoryBusiness = new CategoryBusiness();
 
-        // GET: api/Catalogs
+        // GET: api/Categories
         [Route("Categories")]
-        public IEnumerable<CatalogModel> GetCategories()
+        public IEnumerable<CategoryModel> GetCategories()
         {
             string currentUserId = User.Identity.GetUserId();
 
             return categoryBusiness.GetCategories(currentUserId);
         }
 
-        //GET: api/CatalogPropertiess
+        //GET: api/CategoryPropertiess
         [Route("CategoryProperties")]
-        public IEnumerable<CatalogPropertiesModel> GetCategoryProperties()
+        public IEnumerable<CategoryPropertiesModel> GetCategoryProperties()
         {
             string currentUserId = User.Identity.GetUserId();
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Api.Common;
+using Api.Common.Helper;
 
 namespace Api.Models.Api
 {
@@ -17,6 +18,14 @@ namespace Api.Models.Api
         public string Desc { get; set; }
 
         public Status Status { get; set; }
+
+        public string StatusText
+        {
+            get
+            {
+                return Status.ToText();
+            }
+        }
     }
 
 }

@@ -16,24 +16,23 @@ namespace Api.Controllers.Api
     {
         private ItemBusiness itemBusiness = new ItemBusiness();
 
-        // GET: api/Catalogs
+        // GET: api/Items
         [Route("Items")]
-        public IEnumerable<CatalogModel> GetItems()
+        public IEnumerable<ItemModel> GetItems()
         {
             string currentUserId = User.Identity.GetUserId();
 
             return itemBusiness.GetItems(currentUserId);
         }
 
-        //GET: api/CatalogPropertiess
+        //GET: api/ItemPropertiess
         [Route("ItemProperties")]
-        public IEnumerable<CatalogPropertiesModel> GetItemProperties()
+        public IEnumerable<ItemPropertiesModel> GetItemProperties()
         {
             string currentUserId = User.Identity.GetUserId();
 
             return itemBusiness.GetItemProperties(currentUserId);
         }
-
 
         protected override void Dispose(bool disposing)
         {

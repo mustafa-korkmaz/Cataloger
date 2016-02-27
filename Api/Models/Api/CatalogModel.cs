@@ -1,4 +1,5 @@
 ﻿using Api.Common;
+using Api.Common.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,23 @@ namespace Api.Models.Api
 
         public CatalogVersion Version { get; set; }
 
+        public string VersionText
+        {
+            get
+            {
+                return Version.ToText();
+            }
+        }
+
         public Status Status { get; set; }
+
+        public string StatusText
+        {
+            get
+            {
+                return Status.ToText();
+            }
+        }
 
         public DateTime CreatedAt { get; set; }
 

@@ -16,46 +16,51 @@ namespace Api.BL.Api
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public IEnumerable<CatalogModel> GetItems(string currentUserId)
+        public IEnumerable<ItemModel> GetItems(string currentUserId)
         {
             ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == currentUserId);
 
-            var catalogs = currentUser.Catalogs.Select(c => new CatalogModel()
-            {
-                Id = c.Id,
-                Name = c.Name,
-                Desc = c.Desc,
-                Status = c.Status,
-                Version = c.Version,
-                CreatedAt = c.CreatedAt,
-                ModifiedAt = c.ModifiedAt
-            });
+            var items =
+               from catalog in currentUser.Catalogs
+               join category in db.Categories on catalog.Id equals category.CatalogId
+               join item in db.Items on category.Id equals item.CategoryId
+               select new ItemModel()
+               {
+                   Id = item.Id,
+                   CategoryId = item.CategoryId,
+                   Name = item.Name,
+                   Desc = item.Desc,
+                   Status = item.Status
+               };
 
-            return catalogs;
+            return items;
         }
 
-        public IEnumerable<CatalogPropertiesModel> GetItemProperties(string currentUserId)
+        public IEnumerable<ItemPropertiesModel> GetItemProperties(string currentUserId)
         {
-
-            List<CatalogPropertiesModel> catalogProperties = new List<CatalogPropertiesModel>();
+            List<ItemPropertiesModel> itemProperties = new List<ItemPropertiesModel>();
 
             ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == currentUserId);
 
-            var catalogs = currentUser.Catalogs;
-
-            foreach (Catalog catalog in catalogs)
+            foreach (Catalog catalog in currentUser.Catalogs)
             {
-                foreach (Property property in catalog.Properties)
+                foreach (Category category in catalog.Categories)
                 {
-                    catalogProperties.Add(new CatalogPropertiesModel()
+                    foreach (Item item in category.Items)
                     {
-                        CatalogId = catalog.Id,
-                        PropertyId = property.Id
-                    });
+                        foreach (Property property in item.Properties)
+                        {
+                            itemProperties.Add(new ItemPropertiesModel()
+                            {
+                                ItemId = item.Id,
+                                PropertyId = property.Id
+                            });
+                        }
+                    }
                 }
             }
 
-            return catalogProperties;
+            return itemProperties;
         }
 
         internal void Dispose()
