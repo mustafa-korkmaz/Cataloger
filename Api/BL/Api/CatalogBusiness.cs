@@ -36,26 +36,16 @@ namespace Api.BL.Api
 
         public IEnumerable<CatalogPropertiesModel> GetCatalogProperties(string currentUserId)
         {
-
-            List<CatalogPropertiesModel> catalogProperties = new List<CatalogPropertiesModel>();
-
             ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == currentUserId);
 
             var catalogs = currentUser.Catalogs;
 
-            foreach (Catalog catalog in catalogs)
-            {
-                foreach (Property property in catalog.Properties)
+            return (from catalog in catalogs
+                from property in catalog.Properties
+                select new CatalogPropertiesModel()
                 {
-                    catalogProperties.Add(new CatalogPropertiesModel()
-                    {
-                        CatalogId = catalog.Id,
-                        PropertyId = property.Id
-                    });
-                }
-            }
-
-            return catalogProperties;
+                    CatalogId = catalog.Id, PropertyId = property.Id
+                }).ToList();
         }
 
         internal void Dispose()

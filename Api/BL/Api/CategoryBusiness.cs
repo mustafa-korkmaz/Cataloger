@@ -37,26 +37,15 @@ namespace Api.BL.Api
 
         public IEnumerable<CategoryPropertiesModel> GetCategoryProperties(string currentUserId)
         {
-            List<CategoryPropertiesModel> categoryProperties = new List<CategoryPropertiesModel>();
-
             ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == currentUserId);
 
-            foreach (Catalog catalog in currentUser.Catalogs)
-            {
-                foreach (Category category in catalog.Categories)
+            return (from catalog in currentUser.Catalogs
+                from category in catalog.Categories
+                from property in category.Properties
+                select new CategoryPropertiesModel()
                 {
-                    foreach (Property property in category.Properties)
-                    {
-                        categoryProperties.Add(new CategoryPropertiesModel()
-                        {
-                            CategoryId = category.Id,
-                            PropertyId = property.Id
-                        });
-                    }
-                }
-            }
-
-            return categoryProperties;
+                    CategoryId = category.Id, PropertyId = property.Id
+                }).ToList();
         }
 
         internal void Dispose()
