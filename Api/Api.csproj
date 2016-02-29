@@ -240,7 +240,6 @@
     <Compile Include="Controllers\Api\ItemController.cs" />
     <Compile Include="Controllers\Api\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DAL\DTO\Category.cs" />
     <Compile Include="DAL\DTO\Item.cs" />
     <Compile Include="DAL\DTO\Catalog.cs" />
