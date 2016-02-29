@@ -63,17 +63,6 @@ namespace Api.Models
 
             // many-to-many
             modelBuilder.Entity<Item>()
-                    .HasMany(i => i.Categories)
-                    .WithMany(c => c.Items)
-                    .Map(m =>
-                    {
-                        m.ToTable("ItemCategories");
-                        m.MapLeftKey("ItemId");
-                        m.MapRightKey("CategoryId");
-                    });
-
-            // many-to-many
-            modelBuilder.Entity<Item>()
                     .HasMany(i => i.Properties)
                     .WithMany(p => p.Items)
                      .Map(m =>
@@ -95,11 +84,41 @@ namespace Api.Models
                      });
 
             //one-to-many 
+            modelBuilder.Entity<Category>()
+                        .HasRequired(c => c.Catalog)
+                        .WithMany(c => c.Categories)
+                        .HasForeignKey(c => c.CatalogId);
+
+            // many-to-many
+            modelBuilder.Entity<Category>()
+                    .HasMany(i => i.Properties)
+                    .WithMany(p => p.Categories)
+                     .Map(m =>
+                     {
+                         m.ToTable("CategoryProperties");
+                         m.MapLeftKey("CategoryId");
+                         m.MapRightKey("PropertyId");
+                     });
+
+            // one-to-many
             modelBuilder.Entity<Item>()
-                        .HasRequired(i => i.Catalog)
-                        .WithMany(c => c.Items)
-                        .HasForeignKey(i => i.CatalogId);
+                     .HasRequired(c => c.Category)
+                     .WithMany(c => c.Items)
+                     .HasForeignKey(c => c.CategoryId);
+
+            // many-to-many
+            modelBuilder.Entity<Catalog>()
+                    .HasMany(i => i.Properties)
+                    .WithMany(p => p.Catalogs)
+                     .Map(m =>
+                     {
+                         m.ToTable("CatalogProperties");
+                         m.MapLeftKey("CatalogId");
+                         m.MapRightKey("PropertyId");
+                     });
+
         }
+
     }
 
 }

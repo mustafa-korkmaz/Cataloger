@@ -13,8 +13,8 @@ namespace Api.DAL.DTO
 
         public int Id { get; set; }
 
-        public int CatalogId { get; set; } // foreign key
-        public virtual Catalog Catalog { get; set; } //  // navigation for catalog
+        public int CategoryId { get; set; } // foreign key
+        public virtual Category Category { get; set; } //  // navigation for catalog
 
         [Required]
         [MaxLength(100)]
@@ -24,8 +24,6 @@ namespace Api.DAL.DTO
 
         [Required]
         public Status Status { get; set; }
-
-        public virtual ICollection<Category> Categories { get; set; } // n=>n relation
 
         public virtual ICollection<Property> Properties { get; set; } // n=>n relation
     }
