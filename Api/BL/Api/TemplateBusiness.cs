@@ -12,18 +12,17 @@ namespace Api.BL.Api
     /// <summary>
     /// business class for properties controller
     /// </summary>
-    public class PropertyBusiness
+    public class TemplateBusiness
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public IEnumerable<PropertyModel> GetProperties()
+        public IEnumerable<TemplateModel> GetTemplates()
         {
-            var properties = db.Properties.Select(p => new PropertyModel()
+            var properties = db.Templates.Select(t => new TemplateModel()
             {
-                Id = p.Id,
-                Key = p.Key,
-                Value = p.Value,
-                Status = p.Status,
+                Id = t.Id,
+                Type = t.Type,
+                Desc = t.Desc,
             });
 
             return properties;
@@ -34,9 +33,5 @@ namespace Api.BL.Api
             db.Dispose();
         }
 
-        internal bool PropertyExists(int id)
-        {
-            return db.Properties.Count(i => i.Id == id) > 0;
-        }
     }
 }

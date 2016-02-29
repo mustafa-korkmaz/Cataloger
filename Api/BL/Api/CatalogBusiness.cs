@@ -23,9 +23,11 @@ namespace Api.BL.Api
             var catalogs = currentUser.Catalogs.Select(c => new CatalogModel()
             {
                 Id = c.Id,
+                TemplateId=c.TemplateId,
                 Name = c.Name,
                 Desc = c.Desc,
                 Status = c.Status,
+                TemplateType=c.Template.Type,
                 Version = c.Version,
                 CreatedAt = c.CreatedAt,
                 ModifiedAt = c.ModifiedAt

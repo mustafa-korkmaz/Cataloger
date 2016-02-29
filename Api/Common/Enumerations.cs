@@ -38,9 +38,17 @@ namespace Api.Common
         Professional
     }
 
+    public enum TemplateType
+    {
+        Default,
+        Food,
+        WhiteAppliances // beyaz esya
+    }
+
     public enum Key
     {
         Tag,
+        Discount,
         Image,
         Video
     }

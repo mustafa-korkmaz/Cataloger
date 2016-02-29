@@ -15,6 +15,9 @@ namespace Api.DAL.DTO
 
         public int Id { get; set; }
 
+        public int TemplateId { get; set; } // foreign key
+        public virtual Template Template { get; set; } // navigation property
+
         [Required]
         [MaxLength(100)]
         public string Name { get; set; }

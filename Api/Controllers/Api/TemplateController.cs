@@ -12,29 +12,24 @@ namespace Api.Controllers.Api
     [TabletMenuAuthenticate]  // needs api key
     [Authorize]
     [RoutePrefix("Api")]
-    public class PropertyController : ApiController
+    public class TemplateController : ApiController
     {
-        private PropertyBusiness propertyBusiness = new PropertyBusiness();
+        private TemplateBusiness templateBusiness = new TemplateBusiness();
 
-        // GET: api/Properties
-        [Route("Properties")]
-        public IEnumerable<PropertyModel> GetProperties()
+        // GET: api/Templates
+        [Route("Templates")]
+        public IEnumerable<TemplateModel> GetProperties()
         {
-            return propertyBusiness.GetProperties();
+            return templateBusiness.GetTemplates();
         }
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                propertyBusiness.Dispose();
+                templateBusiness.Dispose();
             }
             base.Dispose(disposing);
-        }
-
-        private bool PropertyExists(int id)
-        {
-            return propertyBusiness.PropertyExists(id);
         }
     }
 }

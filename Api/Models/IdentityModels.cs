@@ -15,7 +15,6 @@ namespace Api.Models
     {
         public ApplicationUser()
         {
-            //   Catalogs = new ICollection<Catalog>();
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
@@ -45,6 +44,7 @@ namespace Api.Models
         public DbSet<Catalog> Catalogs { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Template> Templates { get; set; }
 
         public static ApplicationDbContext Create()
         {
@@ -54,6 +54,12 @@ namespace Api.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            //one-to-many 
+            modelBuilder.Entity<Catalog>()
+                        .HasRequired(c => c.Template)
+                        .WithMany(t => t.Catalogs)
+                        .HasForeignKey(c => c.TemplateId);
 
             // self reference
             modelBuilder.Entity<Category>()

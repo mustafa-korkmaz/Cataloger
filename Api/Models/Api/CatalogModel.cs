@@ -11,6 +11,8 @@ namespace Api.Models.Api
     {
         public int Id { get; set; }
 
+        public int TemplateId { get; set; }
+
         public string Name { get; set; }
 
         public string Desc { get; set; }
@@ -32,6 +34,16 @@ namespace Api.Models.Api
             get
             {
                 return Status.ToText();
+            }
+        }
+
+        public TemplateType TemplateType { get; set; }
+
+        public string TemplateTypeText
+        {
+            get
+            {
+                return TemplateType.ToText();
             }
         }
 
