@@ -20,7 +20,7 @@ namespace Api.Filters
                 integrationKeyHash = headerValues.FirstOrDefault();
             }
 
-            if (!RequestIsAuthenticated(integrationKeyHash))
+            if (!IsRequestAuthenticated(integrationKeyHash))
             {
                 // return 403 (forbidden)
                 actionContext.Response = new System.Net.Http.HttpResponseMessage(System.Net.HttpStatusCode.Forbidden);
@@ -29,7 +29,7 @@ namespace Api.Filters
                 base.OnActionExecuting(actionContext);
         }
 
-        private bool RequestIsAuthenticated(string integrationKeyHash)
+        private bool IsRequestAuthenticated(string integrationKeyHash)
         {
             if (string.IsNullOrEmpty(integrationKeyHash))
             {
