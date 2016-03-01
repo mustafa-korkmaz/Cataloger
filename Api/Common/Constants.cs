@@ -25,4 +25,9 @@ namespace Api.Common
         public const string IntegrationKeyValue = "MustafaTaylanAlican";
         public static string IntegrationKeyHash = Helper.IntegrationKey.Instance.GetHashValue(IntegrationKeyValue);
     }
+
+    public static class ErrorMessages
+    {
+        public const string IntegrationKeyError = "Application Integration key error.";
+    }
 }

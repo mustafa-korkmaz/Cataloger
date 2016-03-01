@@ -223,7 +223,7 @@
     <Compile Include="BL\Api\CatalogBusiness.cs" />
     <Compile Include="BL\Helper\Extensions.cs" />
     <Compile Include="Common\ApiResponse.cs" />
-    <Compile Include="Common\Constraints.cs" />
+    <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\DataExport\Category.cs" />
     <Compile Include="Common\DataExport\Product.cs" />
     <Compile Include="Common\DataExport\ProductImage.cs" />
@@ -248,7 +248,8 @@
     <Compile Include="DAL\MySqlConfiguration.cs" />
     <Compile Include="DAL\MySqlHistoryContext.cs" />
     <Compile Include="DAL\MySqlInitializer.cs" />
-    <Compile Include="Filters\TabletMenuAuthenticateAttribute.cs" />
+    <Compile Include="Filters\ExceptionHandlerAttribute.cs" />
+    <Compile Include="Filters\CatalogerAuthenticateAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

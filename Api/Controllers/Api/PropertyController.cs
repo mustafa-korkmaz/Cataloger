@@ -9,7 +9,7 @@ using Api.Filters;
 
 namespace Api.Controllers.Api
 {
-    [TabletMenuAuthenticate]  // needs api key
+    [CatalogerAuthenticate]  // needs api key
     [Authorize]
     [RoutePrefix("Api")]
     public class PropertyController : ApiController

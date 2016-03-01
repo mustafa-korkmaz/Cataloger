@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Api.DAL.DTO;
@@ -9,9 +10,10 @@ using Api.Filters;
 
 namespace Api.Controllers.Api
 {
-    [TabletMenuAuthenticate]  // needs api key
+    [CatalogerAuthenticate]  // needs api key
     [Authorize]
     [RoutePrefix("Api")]
+    [ExceptionHandler]
     public class CatalogController : ApiController
     {
         private CatalogBusiness catalogBusiness = new CatalogBusiness();

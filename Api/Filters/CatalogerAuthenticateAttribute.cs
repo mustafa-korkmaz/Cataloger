@@ -6,7 +6,7 @@ using System.Web.Http.Controllers;
 
 namespace Api.Filters
 {
-    public class TabletMenuAuthenticateAttribute : ActionFilterAttribute
+    public class CatalogerAuthenticateAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(HttpActionContext actionContext)
         {
