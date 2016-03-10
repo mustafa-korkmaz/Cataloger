@@ -29,5 +29,6 @@ namespace Api.Common
     public static class ErrorMessages
     {
         public const string IntegrationKeyError = "Application Integration key error.";
+        public const string ApplicationExceptionMessage = "Something went wrong, please try again later.";
     }
 }

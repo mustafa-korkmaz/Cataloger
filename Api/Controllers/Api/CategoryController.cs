@@ -11,6 +11,7 @@ namespace Api.Controllers.Api
 {
     [CatalogerAuthenticate]  // needs api key
     [Authorize]
+    [ExceptionHandler]
     [RoutePrefix("Api")]
     public class CategoryController : ApiController
     {
